@@ -4,10 +4,11 @@ import time
 def dotmsg():
     pycom.rgbled(0x7f0000)
     print(".", end=" ")
-    time.sleep(2)
+    #pausemsg()
+    time.sleep(1)
 
 def pausemsg():
-    pycom.rgbled(0x7f7f00)
+    pycom.rgbled(0x000000)
     print(" ", end=" ")
     time.sleep(5)
 

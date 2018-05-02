@@ -1,0 +1,2 @@
+ssid = 'FabLab'
+password = 'MakerFaire'
