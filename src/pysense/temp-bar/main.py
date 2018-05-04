@@ -15,7 +15,9 @@ py = Pysense()
 pressure = MPL3115A2(py)
 
 while True:
+    log 
     temperature = pressure.temp()
     altitude = pressure.alt()
     print("Temperature: {} Degrees  Altitude: {}".format(temperature, altitude))
     time.sleep(1)
+

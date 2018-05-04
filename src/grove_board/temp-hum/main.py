@@ -19,10 +19,12 @@ import pycom
 import time
 from machine import Pin
 from dth import DTH
+from machine import UART
+uart = UART(1, 115200)
 
 # connect the grove temperature/humidity (DHT11) sensor to digital connector J7 or J8
-#  J7 connector: to I/O Pin 'P12'     
-#  J8 connector: to I/O Pin 'P11'     
+#  J7 connector: to I/O Pin 'P12'
+#  J8 connector: to I/O Pin 'P11'
 
 # Instantiate the DHT class with these parameters:
 # 1) the pin number
@@ -30,15 +32,15 @@ from dth import DTH
 th = DTH('P11',0)
 
 # loop to read temperature / humidity from DHT11
-# 
+#
 time.sleep(2)
 while True:
     # Call read() method, which will return DHTResult object with actual values and error code.
+    data = {}
     result = th.read()
     if result.is_valid():
-        print("Temperature: {} C".format(result.temperature))
-        print("Humidity: {}%".format(result.humidity))
-    else:
-        print("Error reading sensor !")
+        data['tmp']=result.temperature
+        data['hum']=result.humidity
+        #print(data)
+        print('{},{}'.format(data['tmp'],data['hum']))
     time.sleep(2)
-    
